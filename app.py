@@ -11,7 +11,6 @@ from datetime import datetime
 from datetime import date
 import requests
 import os
-from pykafka import KafkaClient
 from threading import Thread
 
 with open('app_conf.yaml', 'r') as f:
