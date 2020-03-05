@@ -1,0 +1,59 @@
+swagger: '2.0'
+info:
+  description: This is a simple API
+  version: 1.0.0
+  title: Request and Report Statistics
+  # put the contact info for your development or API team
+  contact:
+    email: you@your-company.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+
+paths:
+  /rides/stats:
+    get:
+      summary: gets stats for ride requests and reports
+      operationId: app.get_ride_stats
+      description: Gets request and report stats
+      produces:
+      - application/json
+      responses:
+        200:
+          description: current stats
+          schema:
+            $ref: '#/definitions/RideStats'
+        400:
+          description: stats don't exist
+definitions:
+  RideStats:
+    type: object
+    required:
+    - num_requests
+    - num_reports
+    - updated_timestamp
+    - num_perfect_ratings
+    - num_bad_ratings
+    properties:
+      num_requests:
+        type: integer
+        example: 300
+      num_report:
+        type: integer
+        example: 300
+      updated_timestamp:
+        type: string
+        format: date-time
+        example: 2016-08-29T09:12:33.00Z
+      num_perfect_ratings:
+        type: integer
+        example: 172
+      num_bad_ratings:
+        type: integer
+        example: 142
+
+
+
