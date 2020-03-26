@@ -13,8 +13,13 @@ import requests
 import os
 from threading import Thread
 
-with open('app_conf.yaml', 'r') as f:
-    app_config = yaml.safe_load(f.read())
+try:
+    with open('/config/app_conf.yaml', 'r') as f:
+        app_config = yaml.safe_load(f.read())
+except FileNotFoundError:
+    with open('app_conf.yaml', 'r') as f:
+        app_config = yaml.safe_load(f.read())
+
 
 with open ('log_conf.yaml', 'r') as f:
     log_config = yaml.safe_load(f.read())
